@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import { Grid, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
@@ -22,17 +20,11 @@ import HostManageSection from "./HostManageSection";
 import HostAnalyticsSection from "./HostAnalyticsSection";
 import HostUpcomingResCard from "./HostUpcomingResCard";
 import HostListingsCreatedCard from "./HostListingsCreatedCard";
-// *** Ignore - work in progress ***
-// import HostFinancialYearSection from "./HostFinancialYearSection";
-// import HostVisitorLocationsSection from "./HostVisitorLocationsSection";
 import HostSocialMediaSection from "./HostSocialMediaSection";
 
 import HostFanInfoCard from "./HostFanInfoCard";
 import HostCardSection from "./HostCardSection";
 import HostFooter from "./HostFooter";
-
-import debug from "sabio-debug";
-const _logger = debug.extend("HostDashboard");
 
 class HostDashboard extends React.Component {
   constructor(props) {
@@ -120,15 +112,12 @@ class HostDashboard extends React.Component {
   };
 
   deleteListing = (id) => {
-    _logger(`Delete listing id# ${id} now.`);
     deleteListing(id)
       .then(this.onDeleteListingSuccess)
       .catch(this.onDeleteListingError);
   };
 
   onDeleteListingSuccess = (response) => {
-    _logger("Successfully deleted listing.", response);
-
     // Update the listing in state
     let updatedListings = [...this.state.listings];
     const tgtIndex = updatedListings.findIndex(
@@ -148,8 +137,6 @@ class HostDashboard extends React.Component {
   };
 
   onDeleteListingError = (error) => {
-    _logger("Could not delete listing:  ", error);
-
     this.setState(() => {
       const snackbar = {
         display: true,
@@ -190,14 +177,6 @@ class HostDashboard extends React.Component {
         <HostCardSection hostItems={this.state} />
         <HostManageSection hostItems={this.state} />
         <HostFanInfoCard />
-        {/*  *** Ignore: Work in Progress ***  */}
-        {/* <HostSection5 /> */}
-        {/* <HostSection7 /> */}
-        {/* <Grid container spacing={4}>
-          <HostFinancialYearSection />
-          <HostVisitorLocationsSection />
-        </Grid> */}
-        {/*  *** Ignore: Work in Progress ***  */}
         <HostSocialMediaSection />
 
         <HostFooter />
