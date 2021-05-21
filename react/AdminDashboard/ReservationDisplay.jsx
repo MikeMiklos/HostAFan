@@ -8,9 +8,6 @@ import Chip from "@material-ui/core/Chip";
 
 import { formatDateShort } from "../../services/dateService";
 
-// import debug from "sabio-debug";
-// const _logger = debug.extend("ReservationDisplay");
-
 const ReservationDisplay = (props) => {
   const reservation = props.reservation;
 
