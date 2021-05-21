@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Fragment } from "react";
 import {
   Button,
@@ -22,9 +20,6 @@ import { Autocomplete, LoadScript } from "@react-google-maps/api";
 import Geocode from "react-geocode";
 import { GOOGLE_API_KEY } from "../../services/serviceHelpers";
 import toast from "toastr";
-
-import debug from "sabio-debug";
-const _logger = debug.extend("Parking");
 
 const libraries = ["places"];
 Geocode.setApiKey(GOOGLE_API_KEY);
@@ -123,8 +118,6 @@ class Parking extends React.Component {
     });
     const userLocations = parkingProfiles.map(this.mapAddressFromProfile);
     // Sort the address array to return only unique addresses.
-    // For now I am comparing the street address, but in the future,
-    // locations should be unique, so you will only need to check the location id
     const uniqueUserLocations = [
       ...userLocations.filter((profile, i, ar) => {
         if (
