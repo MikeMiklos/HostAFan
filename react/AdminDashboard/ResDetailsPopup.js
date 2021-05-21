@@ -8,9 +8,6 @@ import { Avatar, Menu, List, ListItem, Divider } from "@material-ui/core";
 import Chip from "@material-ui/core/Chip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import debug from "sabio-debug";
-const _logger = debug.extend("ResDetailsPopup");
-
 function ResDetailsPopup(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [listing, setListing] = useState(null);
@@ -27,7 +24,6 @@ function ResDetailsPopup(props) {
   };
 
   const onGetListingSuccess = (response) => {
-    _logger(response.item);
     setListing(response.item.listing);
   };
 
