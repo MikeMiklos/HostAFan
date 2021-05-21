@@ -1,11 +1,8 @@
-﻿using Sabio.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Sabio.Models.Requests
-{
     public class ListingAddRequest
     {
         public List<string> Amenities { get; set; }
@@ -57,4 +54,4 @@ namespace Sabio.Models.Requests
         public int HostEventMaxCapacity { get; set; }
 
     }
-}
+
