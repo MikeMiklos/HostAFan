@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Fragment, useState, useEffect } from "react";
 import { hostUpcomingResCardProps } from "./hostProps";
 import * as dateService from "../../services/dateService";
@@ -10,9 +8,6 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { Grid, Card, Button, Tooltip } from "@material-ui/core";
 import StyleTable from "../admin/StyleTable";
 import TimeSelectMenu from "./TimeSelectMenu";
-
-import debug from "sabio-debug";
-const _logger = debug.extend("HostUpcomingReservationsCard");
 
 function HostUpcomingResCard(props) {
   const timeOptions = ["1 month", "3 months", "6 months", "1 year", "All"];
@@ -44,7 +39,6 @@ function HostUpcomingResCard(props) {
   }, [displayPeriod]);
 
   const requestMenuItem = (menuSelection) => {
-    _logger("Date range changed.");
     switch (menuSelection) {
       case "1 month":
         setDisplayPeriod(30);

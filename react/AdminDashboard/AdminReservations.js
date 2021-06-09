@@ -37,9 +37,6 @@ import MenuPopup from "./MenuPopup";
 import ResSelectDropdown from "./ResSelectDropdown";
 import StyleTable from "./StyleTableReservations";
 
-import debug from "sabio-debug";
-const _logger = debug.extend("AdminReservations");
-
 function AdminReservations() {
   const [reservations, setReservations] = useState([]);
   const [mappedRes, setMappedRes] = useState([]);
@@ -330,7 +327,6 @@ function AdminReservations() {
         .then(onUpdateOldResSuccess)
         .catch(onUpdateOldResError);
     } else {
-      _logger("Close out all old res.....");
       updateOldRes([]).then(onUpdateOldResSuccess).catch(onUpdateOldResError);
     }
   };

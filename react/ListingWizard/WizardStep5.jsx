@@ -10,9 +10,6 @@ import { Card, CardHeader, Divider, Grid, Button } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ProfileMap from "./ProfileMap";
 
-import logger from "sabio-debug";
-const _logger = logger.extend("ListingWizard - Step 5");
-
 const WizardStep5 = (props) => {
   const { values, handleSubmit, nextLabel, onBack } = props;
   const [event, setEvent] = useState({

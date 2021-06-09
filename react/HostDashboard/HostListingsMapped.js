@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Fragment } from "react";
 import { hostListingsMappedProps } from "./hostProps";
 import * as dateService from "../../services/dateService";
@@ -10,9 +8,6 @@ import { IconButton, Button, Tooltip } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import debug from "sabio-debug";
-const _logger = debug.extend("HostListingsMapped");
 
 function HostListingsMapped(props) {
   const history = useHistory();
@@ -105,12 +100,10 @@ function HostListingsMapped(props) {
   };
 
   const editClick = (e) => {
-    _logger("Edit listing....");
     history.push(`/listingForm/${e.currentTarget.id}`);
   };
 
   const deleteClick = (e) => {
-    _logger("Delete listing....");
     props.delete(e.currentTarget.id);
   };
 

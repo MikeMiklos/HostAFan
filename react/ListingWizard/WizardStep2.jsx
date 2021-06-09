@@ -22,9 +22,6 @@ import {
 } from "@material-ui/core";
 import * as Yup from "yup";
 
-// import logger from "sabio-debug";
-// const _logger = logger.extend("ListingWizard - Step 2");
-
 const WizardStep2 = (props) => {
   const {
     values,
@@ -66,7 +63,6 @@ const WizardStep2 = (props) => {
 
   const handleStayPriceChange = (e) => {
     const newNum = parseInt(e.target.value);
-    // _logger("CostPerNight changed:  ", newNum);
     if (newNum > -1) {
       setFieldValue(e.target.name, newNum);
     } else if (e.target.value === "") {
@@ -75,7 +71,6 @@ const WizardStep2 = (props) => {
   };
 
   const handleAvailabilityDateChange = (e) => {
-    // _logger(`The field ${e.target.name} changed to ${e.target.value}`);
     if (e.target.name === "availabilityStart") {
       // Set start date
       setFieldValue("availabilityStart", e.target.value);
@@ -107,14 +102,12 @@ const WizardStep2 = (props) => {
         values.hostEventEndTime !== "" &&
         values.hostEventEndTime < e.target.value
       ) {
-        // _logger("Default setting end day/time to match start day/time.");
         setFieldValue("hostEventEndTime", e.target.value);
       }
     } else if (
       e.target.name === "hostEventEndTime" &&
       e.target.value < values.hostEventStartTime
     ) {
-      // _logger("Default setting end day/time to match start day/time.");
       setFieldValue(e.target.name, values.hostEventStartTime);
     } else {
       setFieldValue(e.target.name, e.target.value);
@@ -123,7 +116,6 @@ const WizardStep2 = (props) => {
 
   const handleMaxCapacityChange = (e) => {
     const newNum = parseInt(e.target.value);
-    // _logger("Max Capacity changed:  ", newNum);
     if (newNum > -1) {
       setFieldValue(e.target.name, newNum);
     } else if (e.target.value === "") {
@@ -132,7 +124,6 @@ const WizardStep2 = (props) => {
   };
 
   const updateUrl = (url, setFieldValue) => {
-    // _logger("File upload: UpdateUrl firing", url);
     setFieldValue("imageUrl", url[0].url);
   };
 

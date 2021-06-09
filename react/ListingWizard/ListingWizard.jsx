@@ -22,9 +22,6 @@ import "../components/forms/LokiStyling.css";
 import { Snackbar, MenuItem } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
-import logger from "sabio-debug";
-const _logger = logger.extend("ListingWizard");
-
 const ListingWizard = () => {
   const history = useHistory();
   const params = useParams();
@@ -87,7 +84,6 @@ const ListingWizard = () => {
 
   const onGetListingSuccess = (response) => {
     const listing = response.item.listing;
-    // _logger("Got listing:  ", listing);
 
     if (listing.hasReservation) {
       // Host cannot edit a listing that has a reservation...
@@ -203,7 +199,6 @@ const ListingWizard = () => {
   };
 
   const onGetListingError = (error) => {
-    _logger("Error retrieving listing:  ", error);
     setSnackbarState({
       display: true,
       severity: "error",
@@ -230,7 +225,6 @@ const ListingWizard = () => {
   };
 
   const onGetHostProfilesSuccess = (res) => {
-    // _logger("Got host profiles: ", res);
     setHostProfiles(res.items);
     setHostProfilesMapped(res.items.map(mapHostProfiles));
   };
@@ -240,7 +234,6 @@ const ListingWizard = () => {
   };
 
   const onGetParkingProfilesSuccess = (res) => {
-    // _logger("Got parking profiles: ", res);
     setHostParkingProfiles(
       res.items.filter((profile) => profile.status.id === 1)
     );
@@ -256,7 +249,6 @@ const ListingWizard = () => {
   };
 
   const onFinish = (values) => {
-    // _logger("Starting onFinish....");
     setFormData(values);
     let inputData = { ...values };
     inputData.amenities = inputData.amenities
@@ -297,14 +289,12 @@ const ListingWizard = () => {
     }
 
     if (params.hasOwnProperty("id")) {
-      _logger(`Update listing ${params.id}`);
       inputData.id = parseInt(params.id);
       listingService
         .updateListing(inputData)
         .then(onUpdateListingSuccess)
         .catch(onCreateListingError);
     } else {
-      _logger(`Create new listing.`);
       listingService
         .createListing(inputData)
         .then(onCreateListingSuccess)
@@ -323,7 +313,6 @@ const ListingWizard = () => {
   };
 
   const onChange = (values) => {
-    // _logger("onChange called with values: ", values);
     setFormData(values);
   };
 
@@ -400,7 +389,6 @@ const ListingWizard = () => {
   ];
 
   const onCreateListingSuccess = (res) => {
-    _logger("Create listing success. Listing #", res.item);
     const newFormData = { ...formData, listingId: res.item };
     setFormData(newFormData);
     setAddUpdateSuccess(true);
@@ -421,7 +409,6 @@ const ListingWizard = () => {
   };
 
   const onUpdateListingSuccess = (res) => {
-    _logger("Update listing success. Listing #", res.item);
     setAddUpdateSuccess(true);
     setSnackbarState({
       display: true,

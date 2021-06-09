@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Fragment, useState, useEffect } from "react";
 import { hostListingsCreatedProps } from "./hostProps";
 import * as dateService from "../../services/dateService";
@@ -21,9 +19,6 @@ import StyleTable from "../admin/StyleTable";
 
 import TimeSelectMenu from "./TimeSelectMenu";
 import HostListingsMapped from "./HostListingsMapped";
-
-import debug from "sabio-debug";
-const _logger = debug.extend("HostListingsCreatedCard");
 
 function HostListingsCreatedCard(props) {
   const timeOptions = ["1 month", "3 months", "6 months", "1 year", "All"];
@@ -62,7 +57,6 @@ function HostListingsCreatedCard(props) {
   }, [displayPeriod]);
 
   const requestMenuItem = (menuSelection) => {
-    _logger("Date range changed.");
     switch (menuSelection) {
       case "1 month":
         setDisplayPeriod(30);
@@ -182,13 +176,11 @@ function HostListingsCreatedCard(props) {
   };
 
   const handleDelete = (id) => {
-    _logger("Handle delete with Id: ", id);
     setDeleteListingId(parseInt(id));
     toggleDialog();
   };
 
   const confirmDelete = () => {
-    _logger(`Delete listing id# ${deleteListingId} now.`);
     props.deleteListing(deleteListingId);
     toggleDialog();
   };

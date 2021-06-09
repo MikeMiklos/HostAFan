@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Fragment, useState, useEffect } from "react";
 import { hostAnalyticsProps } from "./hostProps";
 import { getDayDiff } from "../../services/dateService";
@@ -7,9 +5,6 @@ import { getDayDiff } from "../../services/dateService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CompletedIcon from "@material-ui/icons/AssignmentTurnedInTwoTone";
 import { Grid, Card, CardContent } from "@material-ui/core";
-
-// import debug from "sabio-debug";
-// const _logger = debug.extend("HostAnalytics");
 
 function HostAnalyticsSection(props) {
   const [secDiff, setSecDiff] = useState(0);
@@ -43,7 +38,6 @@ function HostAnalyticsSection(props) {
   };
 
   const getNumResComp = () => {
-    // _logger(props.reservations);
     return props.reservations.filter(
       (res) => res.statusId === 2 || res.statusId === 8
     ).length; // Check for "Inactive" or "Published"
